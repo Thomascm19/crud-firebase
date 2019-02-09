@@ -12,6 +12,9 @@ import { PersonaComponent } from './components/personas/persona.component';
 // Routas
 import { ROUTER } from './app.routes';
 
+// servicios
+import { PersonasService } from './services/personas.service';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { ROUTER } from './app.routes';
     FormsModule,
     ROUTER
   ],
-  providers: [],
+  providers: [
+    PersonasService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

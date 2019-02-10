@@ -57,4 +57,10 @@ export class PersonasService {
          return res;
        }));
   }
+  getPersonas() {
+
+    return this.http.get(this.personasURL).pipe (map(res => {
+      return res;
+    }));
+  }
 }

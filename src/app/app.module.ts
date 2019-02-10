@@ -14,13 +14,15 @@ import { ROUTER } from './app.routes';
 
 // servicios
 import { PersonasService } from './services/personas.service';
+import { KeysPipe } from './pipes/keys.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonasComponent,
-    PersonaComponent
+    PersonaComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Persona } from '../interfaces/persona.interface';
+import { Router } from '@angular/router';
 
+import { Persona } from '../interfaces/persona.interface';
+import { PersonasService } from '../../services/personas.service';
 
 @Component({
   selector: 'app-persona',
@@ -18,13 +20,22 @@ export class PersonaComponent implements OnInit {
     estado: ''
   };
 
-  constructor() { }
+  // tslint:disable-next-line:variable-name
+  constructor(private _personaService: PersonasService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   guardar() {
     console.log(this.persona);
+
+    this._personaService.nuevaPersona(this.persona)
+      .subscribe(data => {
+        console.log(data);
+        // tslint:disable-next-line:no-string-literal
+        this.router.navigate(['/persona', data['name']]);
+    }, error => console.log(error));
   }
 
 }

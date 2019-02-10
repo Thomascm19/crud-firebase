@@ -21,6 +21,7 @@ export class PersonaComponent implements OnInit {
 
   // tslint:disable-next-line:no-inferrable-types
   nuevo: boolean = false;
+  id: string;
 
   // tslint:disable-next-line:variable-name
   constructor(private _personaService: PersonasService,
@@ -29,10 +30,8 @@ export class PersonaComponent implements OnInit {
 
                 this.activatedRoute.params
                     .subscribe(parametros => {
-
-                    console.log(parametros);
-                    this.id = parametros.['id'];
-
+                    // tslint:disable-next-line:no-string-literal
+                    this.id = parametros['id'];
                     });
 
               }
@@ -43,12 +42,21 @@ export class PersonaComponent implements OnInit {
   guardar() {
     console.log(this.persona);
 
-    this._personaService.nuevaPersona(this.persona)
+    if (this.id === 'nuevo') {
+      // insertando
+      this._personaService.nuevaPersona(this.persona)
       .subscribe(data => {
         console.log(data);
         // tslint:disable-next-line:no-string-literal
         this.router.navigate(['/persona', data['name']]);
-    }, error => console.log(error));
+      }, error => console.log(error));
+    } else {
+      this._personaService.actualizarPersona(this.persona, this.id)
+      .subscribe(data => {
+        console.log(data);
+      }, error => console.log(error));
+    }
+
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { Persona } from '../interfaces/persona.interface';
 import { PersonasService } from '../../services/personas.service';
 
@@ -20,9 +19,23 @@ export class PersonaComponent implements OnInit {
     estado: ''
   };
 
+  // tslint:disable-next-line:no-inferrable-types
+  nuevo: boolean = false;
+
   // tslint:disable-next-line:variable-name
   constructor(private _personaService: PersonasService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
+
+                this.activatedRoute.params
+                    .subscribe(parametros => {
+
+                    console.log(parametros);
+                    this.id = parametros.['id'];
+
+                    });
+
+              }
 
   ngOnInit() {
   }

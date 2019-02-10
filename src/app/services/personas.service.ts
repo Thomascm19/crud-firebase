@@ -30,4 +30,22 @@ export class PersonasService {
     }));
   }
 
+  actualizarPersona(persona: Persona, key$: string) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+     'Content-Type': 'application/json'
+      })
+    };
+
+    // tslint:disable-next-line:prefer-const
+    let url = `${this.personaURL}/${key$}.json`;
+
+    return this.http.put<Persona>( url , persona , httpOptions )
+    .pipe(  map( res => {
+             console.log(res);
+             return res;
+    }));
+  }
+
 }

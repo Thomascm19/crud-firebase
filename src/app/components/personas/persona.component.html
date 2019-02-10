@@ -2,7 +2,8 @@
 
 <hr>
 <button class="btn btn-danger" [routerLink]="['/personas']">Regresar</button>
-
+<hr>
+<button (click)="agregarNueva(forma)" class="btn btn-outline-primary md-2">Nueva Persona</button>
 <hr>
 <form (ngSubmit)="guardar()" #forma="ngForm">
 

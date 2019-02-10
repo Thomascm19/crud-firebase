@@ -32,7 +32,14 @@ export class PersonaComponent implements OnInit {
                     .subscribe(parametros => {
                     // tslint:disable-next-line:no-string-literal
                     this.id = parametros['id'];
-                    });
+
+                  // tslint:disable-next-line:align
+                  if (this.id !== 'nuevo') {
+                    this._personaService.getPersona(this.id)
+                       .subscribe( (data: Persona) => this.persona = data);
+
+                  }
+                  });
 
               }
 
@@ -57,6 +64,11 @@ export class PersonaComponent implements OnInit {
       }, error => console.log(error));
     }
 
+  }
+  agregarNueva(form: NgForm) {
+    this.router.navigate(['/persona', 'nuevo']);
+
+    form.reset();
   }
 
 }

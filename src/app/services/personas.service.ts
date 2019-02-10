@@ -48,4 +48,13 @@ export class PersonasService {
     }));
   }
 
+  getPersona(key$: string) {
+
+       // tslint:disable-next-line:prefer-const
+       let url = `${this.personaURL}/${key$}.json`;
+       return this.http.get(url).pipe (map(res => {
+
+         return res;
+       }));
+  }
 }

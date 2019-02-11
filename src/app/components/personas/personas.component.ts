@@ -10,14 +10,17 @@ import { PersonasService } from '../../services/personas.service';
 export class PersonasComponent implements OnInit {
 
   personas: any;
+  // tslint:disable-next-line:no-inferrable-types
+  loading: boolean = false;
 
   // tslint:disable-next-line:variable-name
   constructor(private _personasService: PersonasService) {
 
   this._personasService.getPersonas()
         .subscribe(data => {
-          console.log(data);
           this.personas = data;
+
+          this.loading = false;
         });
 
   }

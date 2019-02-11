@@ -17,6 +17,7 @@
       <th scope="col">Direccion</th>
       <th scope="col">Tel</th>
       <th scope="col">Estado Civil</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,8 @@
       <td>{{personas[k].direccion}}</td>
       <td>{{personas[k].telefono}}</td>
       <td>{{personas[k].estado}}</td>
+      <td scope="col"><button [routerLink]="['/persona', k]" type="button" class="btn btn-light">Actualizar</button></td>
+      <td scope="col"><button (click)="eliminar(k)" type="button" class="btn btn-danger">Eliminar</button></td>
     </tr>
   </tbody>
 </table>

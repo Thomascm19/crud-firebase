@@ -52,7 +52,8 @@ export class PersonasService {
 
        // tslint:disable-next-line:prefer-const
        let url = `${this.personaURL}/${key$}.json`;
-       return this.http.get(url).pipe (map(res => {
+       return this.http.get(url)
+           .pipe (map(res => {
 
          return res;
        }));
@@ -62,5 +63,13 @@ export class PersonasService {
     return this.http.get(this.personasURL).pipe (map(res => {
       return res;
     }));
+  }
+  eliminar(key$: string) {
+    // tslint:disable-next-line:prefer-const
+    let url = `${this.personaURL}/${key$}.json`;
+    return this.http.delete(url)
+        .pipe (map(res => {
+          return res;
+        }));
   }
 }

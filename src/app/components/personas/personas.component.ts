@@ -25,4 +25,15 @@ export class PersonasComponent implements OnInit {
   ngOnInit() {
   }
 
+  eliminar(key$: string) {
+    this._personasService.eliminar(key$)
+      .subscribe(respuesta => {
+         if (respuesta) {
+           console.error(respuesta);
+         } else {
+           delete this.personas[key$];
+         }
+      });
+  }
+
 }

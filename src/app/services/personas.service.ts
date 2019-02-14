@@ -11,8 +11,8 @@ import { map } from 'rxjs/operators';
 })
 export class PersonasService {
 
-  personasURL: any = 'https://registro-a2587.firebaseio.com/personas.json';
-  personaURL: any = 'https://registro-a2587.firebaseio.com/personas/';
+  personasURL: any = 'https://library-fc5f8.firebaseio.com/libros.json';
+  personaURL: any = 'https://library-fc5f8.firebaseio.com/libros/';
 
   constructor(private http: HttpClient) { }
 
